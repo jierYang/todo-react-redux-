@@ -11,16 +11,24 @@ export default class AddTodo extends React.Component {
         this.handleClose = this.handleClose.bind(this);
 
         this.state = {
-            show: false
+            show: false,
+            date: new Date()
         };
     }
 
     handleClose() {
         this.setState({show: false});
+
     }
 
     handleShow() {
         this.setState({show: true});
+    }
+
+    handleDate(date){
+        debugger
+        this.setState({date:{date}});
+        console.log(this.state.date);
     }
 
     render() {
@@ -38,7 +46,7 @@ export default class AddTodo extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <li>Action: <input /></li>
-                        <li>Due Date:<AddTodoCalendar /></li>
+                        <li>Due Date:<AddTodoCalendar handleDate={this.handleDate.bind(this)}/></li>
                         <li>Status:<AddTodoStatus/></li>
                     </Modal.Body>
                     <Modal.Footer>
