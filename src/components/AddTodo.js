@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Modal} from "react-bootstrap";
 import AddTodoStatus from "./AddTodoStatus";
+import AddTodoCalendar from "./AddTodoCalendar";
 
 export default class AddTodo extends React.Component {
     constructor(props, context) {
@@ -37,7 +38,7 @@ export default class AddTodo extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <li>Action: <input /></li>
-                        <li>Due Date:<input /></li>
+                        <li>Due Date:<AddTodoCalendar /></li>
                         <li>Status:<AddTodoStatus/></li>
                     </Modal.Body>
                     <Modal.Footer>
