@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Modal} from "react-bootstrap";
+import AddTodoStatus from "./AddTodoStatus";
 
 export default class AddTodo extends React.Component {
     constructor(props, context) {
@@ -14,11 +15,11 @@ export default class AddTodo extends React.Component {
     }
 
     handleClose() {
-        this.setState({ show: false });
+        this.setState({show: false});
     }
 
     handleShow() {
-        this.setState({ show: true });
+        this.setState({show: true});
     }
 
     render() {
@@ -35,7 +36,9 @@ export default class AddTodo extends React.Component {
                         <Modal.Title>Add you want to do</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-
+                        <li>Action: <input /></li>
+                        <li>Due Date:<input /></li>
+                        <li>Status:<AddTodoStatus/></li>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.handleClose}>Add</Button>
