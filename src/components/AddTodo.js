@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Modal} from "react-bootstrap";
 import AddTodoStatus from "./AddTodoStatus";
 import AddTodoCalendar from "./AddTodoCalendar";
+import {applyMiddleware as dispatch} from "redux";
 
 export default class AddTodo extends React.Component {
     constructor(props, context) {
@@ -12,30 +13,36 @@ export default class AddTodo extends React.Component {
 
         this.state = {
             show: false,
-            date: new Date()
+            date: new Date(),
+            status: 'todo'
         };
     }
 
     handleClose() {
+        debugger
         this.setState({show: false});
 
+        dispatch({type: 'LOGIN', todo: {action:document.getElementById("actionInput").value,date:this.state.date,status:this.state.status}});
+        console.log({action:document.getElementById("actionInput").value,date:this.state.date,status:this.state.status});
     }
 
     handleShow() {
         this.setState({show: true});
     }
 
-    handleDate(date){
-        debugger
-        this.setState({date:{date}});
+    handleDate(date) {
+        this.setState({date: {date}});
         console.log(this.state.date);
+    }
+
+    handleStatus(selectedOption) {
+        this.setState({status: {selectedOption}});
+        // console.log(this.state.status);
     }
 
     render() {
         return (
             <div>
-                <p>Click to get the full Modal experience!</p>
-
                 <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
                     +
                 </Button>
@@ -45,9 +52,9 @@ export default class AddTodo extends React.Component {
                         <Modal.Title>Add you want to do</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <li>Action: <input /></li>
+                        <li>Action: <input id="actionInput"/></li>
                         <li>Due Date:<AddTodoCalendar handleDate={this.handleDate.bind(this)}/></li>
-                        <li>Status:<AddTodoStatus/></li>
+                        <li>Status:<AddTodoStatus handleStatus={this.handleStatus.bind(this)}/></li>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.handleClose}>Add</Button>
@@ -57,3 +64,15 @@ export default class AddTodo extends React.Component {
         );
     }
 }
+
+// const mapDispatchToProps = (dispatch) => ({
+//     onAddTodo: () => dispatch({type: 'LOGIN', todo: {action:document.getElementById("actionInput").value,date:this.state.date,status:this.state.status}})
+// });
+//
+// const mapStateToProps = (state) => ({
+//    null : state.todoList
+// });
+//
+// const addTodoContainer = connect(mapStateToProps, mapDispatchToProps)(AddTodo);
+//
+// export {addTodoContainer} ;

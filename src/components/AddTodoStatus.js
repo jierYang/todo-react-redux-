@@ -9,12 +9,19 @@ const options = [
 
 export default class AddTodoStatus extends React.Component {
     state = {
-        selectedOption: null,
+        selectedOption: { value: 'todo', label: 'To do' },
     }
+    // handleChange(selectedOption) {
+    //     debugger
+    //     this.setState({selectedOption:{ selectedOption }});
+    //     this.props.handleStatus({ selectedOption });
+    // }
+
     handleChange = (selectedOption) => {
         this.setState({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
+        this.props.handleStatus({ selectedOption });
     }
+
     render() {
         const { selectedOption } = this.state;
 

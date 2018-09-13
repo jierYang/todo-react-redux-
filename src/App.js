@@ -9,19 +9,19 @@ import {Provider} from 'react-redux'
 import {combineReducers, createStore} from "redux";
 
 
-// const addTodoReducer = (todoList = [], action) => {
-//     switch (action.type) {
-//         case "ADD-TODO": {
-//             return todoList.push(action.todo);
-//         }
-//         default:
-//             return todoList;
-//     }
-// };
-//
-// const store = createStore(combineReducers({
-//     todoList: addTodoReducer
-// }));
+const addTodoReducer = (todoList = [], action) => {
+    switch (action.type) {
+        case "ADD-TODO": {
+            return todoList.push(action.todo);
+        }
+        default:
+            return todoList;
+    }
+};
+
+const store = createStore(combineReducers({
+    todoList: addTodoReducer
+}));
 
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
         return (
             <div className="App">
                 {
-                   // <Provider store={store}>
+                    <Provider store={store}>
                         <BrowserRouter>
                             <div>
                                 <Link to="/" style={{margin: 10}}>首页</Link>
@@ -40,7 +40,7 @@ class App extends Component {
                                 </Switch>
                             </div>
                         </BrowserRouter>
-                    // </Provider>
+                    </Provider>
                 }
             </div>
         );
