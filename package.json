@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@khanacademy/react-multi-select": "^0.2.8",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
     "react-bootstrap-date-picker": "^5.1.0",
@@ -21,6 +22,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "redux-devtools": "^3.4.1"
   }
 }
