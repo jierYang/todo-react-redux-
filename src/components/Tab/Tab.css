@@ -1,14 +1,19 @@
-.tab_todo_table_add{
+.tab_todo_table_add {
     width: 70%;
     margin: 2% auto 0% auto;
 }
 
-.tab_todo_add_btn{
+.tab_todo_add_btn {
     width: 100%;
     margin-top: 0%;
 }
 
-.tabIndex{
+.tab_todo_detail_btn {
+    margin-bottom: 2%;
+    float: left
+}
+
+.tabIndex {
     width: 90%;
     margin: 2% auto 0% auto;
 }

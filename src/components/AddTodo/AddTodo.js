@@ -19,7 +19,9 @@ class AddTodo extends React.Component {
             show: false,
             date: new Date(),
             status: 'To do',
-            tags:''
+            tags:'',
+            btnCottent: (props.type==="ADD")? '+':'details',
+            tipContent: (props.type==="ADD")? 'Add you want to do':'Details of Action',
         };
     }
 
@@ -57,7 +59,7 @@ class AddTodo extends React.Component {
             <div>
                 <Modal show={this.state.show} onHide={this.handleCancel}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Add you want to do</Modal.Title>
+                        <Modal.Title>{this.state.tipContent}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <li>Action: <input id="actionInput"/></li>
@@ -71,8 +73,8 @@ class AddTodo extends React.Component {
                     </Modal.Footer>
                 </Modal>
 
-                <button className = "tab_todo_add_btn" onClick={this.handleShow}>
-                    +
+                <button className={this.state.btnCottent==='+'?'tab_todo_add_btn':'tab_todo_detail_btn'} onClick={this.handleShow}>
+                    {this.state.btnCottent}
                 </button>
             </div>
         );
