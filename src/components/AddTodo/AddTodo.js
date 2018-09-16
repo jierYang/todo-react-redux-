@@ -48,7 +48,7 @@ class AddTodo extends React.Component {
     }
 
     handleTags(selectedOption) {
-        this.setState({status: selectedOption});
+        this.setState({tags: selectedOption});
         console.log({selectedOption});
     }
 
