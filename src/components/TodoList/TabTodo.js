@@ -25,7 +25,7 @@ const TodosTableBody = (props) => {
             <td>{props.item.tags}</td>
             <td>{props.item.date.toLocaleDateString()}</td>
             <td>{props.item.status}</td>
-            <td><button>details</button> <button>delete</button></td>
+            <td><button>details</button>  <button onClick={props.clickDelHandler}>delete</button></td>
         </tr>
         </tbody>
     )
@@ -33,13 +33,18 @@ const TodosTableBody = (props) => {
 
 const TabTodo = (props) => (
     <div className="tab_todo_table_add">
-        <Table striped bordered condensed hover>
+        <Table striped bordered condensed hover id="tbID">
             <TodosTableHead/>
 
             {
                 props.todoList.map(function (item) {
                     return (
-                        <TodosTableBody item={item}/>
+                        <TodosTableBody item={item}
+                                        clickDelHandler={() => {
+                                            debugger
+                                            document.getElementById('tbID').deleteRow(item.id)
+                                        }}
+                        />
                     )
                 })
             }
