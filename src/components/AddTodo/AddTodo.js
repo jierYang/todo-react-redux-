@@ -38,7 +38,7 @@ class AddTodo extends React.Component {
     }
 
     handleDate(date) {
-        this.setState({date: {date}});
+        this.setState({date:date});
         console.log(this.state.date);
     }
 

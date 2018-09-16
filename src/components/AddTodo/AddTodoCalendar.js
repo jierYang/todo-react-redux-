@@ -4,7 +4,7 @@ import Calendar from 'react-calendar';
 export default class AddTodoCalendar extends Component {
 
     onChange = date => {
-        this.props.handleDate({date})
+        this.props.handleDate(date)
     }
 
     render() {
@@ -13,7 +13,6 @@ export default class AddTodoCalendar extends Component {
 
                 <Calendar
                     onChange={this.onChange}
-                    // value={this.state.date}
                 />
 
             </div>

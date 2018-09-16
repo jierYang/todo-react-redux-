@@ -9,7 +9,7 @@ import {Provider} from 'react-redux'
 import {combineReducers, createStore} from "redux";
 
 
-const addTodoReducer = (state = [], action) => {
+const addTodoReducer = (state = [],action) => {
     switch (action.type) {
         case "ADD_TODO":
             return [...state,action.todo];
