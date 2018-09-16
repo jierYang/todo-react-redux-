@@ -20,8 +20,8 @@ class AddTodo extends React.Component {
             date: new Date(),
             status: 'To do',
             tags:'',
-            btnCottent: (props.type==="ADD")? '+':'details',
-            tipContent: (props.type==="ADD")? 'Add you want to do':'Details of Action',
+            btnCottent: props.type,
+            tipContent: (props.type==="Add")? 'Add you want to do':'Details of Action',
         };
     }
 
@@ -69,11 +69,11 @@ class AddTodo extends React.Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.handleCancel}>CANCEL</Button>
-                        <Button onClick={this.handleAdd}>Add</Button>
+                        <Button onClick={this.handleAdd}>{this.state.btnCottent}</Button>
                     </Modal.Footer>
                 </Modal>
 
-                <button className={this.state.btnCottent==='+'?'tab_todo_add_btn':'tab_todo_detail_btn'} onClick={this.handleShow}>
+                <button className={this.state.btnCottent==='Add'?'tab_todo_add_btn':'tab_todo_detail_btn'} onClick={this.handleShow}>
                     {this.state.btnCottent}
                 </button>
             </div>

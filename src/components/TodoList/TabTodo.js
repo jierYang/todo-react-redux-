@@ -26,7 +26,7 @@ const TodosTableBody = (props) => {
             <td>{props.item.tags}</td>
             <td>{props.item.date.toLocaleDateString()}</td>
             <td>{props.item.status}</td>
-            <td><AddTodoContainer type={'DETAIL'}/>
+            <td><AddTodoContainer type={'Edit'} id={props.item}/>
                 <button onClick={props.clickDelHandler}>delete</button>
             </td>
         </tr>
@@ -66,7 +66,7 @@ const TabTodo = (props) => (
             }
         </Table>
 
-        <AddTodoContainer type={'ADD'}/>
+        <AddTodoContainer type={'Add'}/>
     </div>
 );
 
