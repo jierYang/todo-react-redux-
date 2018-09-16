@@ -17,6 +17,18 @@ const addTodoReducer = (state = [], action, id = 0) => {
             return [...state, action.todo];
         }
 
+        case "DEL_TODO": {
+            debugger
+            // return state.map((item, index) => {
+            //     if (item.id === action.id) {
+            //         state.splice(index, 1)
+            //     }
+            // })
+            state = state.filter(t => t.id!==action.id);
+            return state;
+            // return state.filter(t => t.id===action.id);
+        }
+
         default:
             return state;
     }
