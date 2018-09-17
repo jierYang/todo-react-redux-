@@ -4,6 +4,30 @@ import TabTodoContainer from "../TodoList/TabTodo";
 import TabStatistic from "../Statistic/TabStatistic";
 
 import './Tab.css'
+import connect from "react-redux/es/connect/connect";
+
+let numinProgress = 0;
+
+let numblocked = 0;
+
+let numTodo = 0;
+
+
+
+
+function countNumber (){
+    numinProgress = this.props.todoList.filter(t => t.label !== 'In progress').length;
+    numblocked = this.props.todoList.filter(t => t.label !== 'Blocked').length;
+    numTodo = this.props.todoList.filter(t => t.label !== 'To do').length;
+}
+
+
+
+const data = [
+    {value: numinProgress, name: "In progress"},
+    {value: numblocked, name: "Blocked"},
+    {value: numTodo, name: "To do"}
+]
 
 const TabIndex = () => (
     <div className="tabIndex">
@@ -12,11 +36,17 @@ const TabIndex = () => (
                 <TabTodoContainer/>
             </Tab>
             <Tab eventKey={2} title="Statistic">
-                <TabStatistic/>
+                <TabStatistic data={data}/>
             </Tab>
         </Tabs>
     </div>
 );
 
+const mapStateToProps = (state) => ({
+    todoList: state.todoList
+});
 
-export default TabIndex
+const TabIndexContainer = connect(mapStateToProps, null)(TabIndex);
+
+
+export default TabIndexContainer;
