@@ -36,7 +36,7 @@ const TabIndex = () => (
                 <TabTodoContainer/>
             </Tab>
             <Tab eventKey={2} title="Statistic">
-                <TabStatistic data={data}/>
+                <TabStatistic/>
             </Tab>
         </Tabs>
     </div>
