@@ -2,6 +2,7 @@
   "name": "todo-react-redux",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@khanacademy/react-multi-select": "^0.2.8",
     "chart.js": "^2.7.2",

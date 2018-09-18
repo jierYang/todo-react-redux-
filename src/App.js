@@ -16,6 +16,7 @@ let todoId = 0;
 const addTodoReducer = (state = [], action) => {
     switch (action.type) {
         case "ADD_TODO": {
+            debugger
             todoId += 1;
             action.todo['id'] = todoId;
             return [...state, action.todo];
