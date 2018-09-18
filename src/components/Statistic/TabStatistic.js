@@ -3,15 +3,15 @@ import {Pie} from 'react-chartjs-2'
 
 export default class TabStatistic extends React.Component {
 
-    render(){
-        const chartData={
+    render() {
+        const chartData = {
             labels: [
                 'In progress',
                 'Blocked',
                 'To do'
             ],
             datasets: [{
-                data: [2, 1, 1],
+                data: [this.props.numinProgress, this.props.numblocked, this.props.numTodo],
                 backgroundColor: [
                     '#ff9846',
                     '#497e41',
@@ -25,5 +25,6 @@ export default class TabStatistic extends React.Component {
             }]
 
         };
-        return(<div><Pie data = {chartData}/></div>);}
+        return (<div><Pie data={chartData}/></div>);
+    }
 }

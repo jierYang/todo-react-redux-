@@ -41,7 +41,6 @@ class AddTodo extends React.Component {
     }
 
     handleEdit() {
-        debugger
         this.setState({show: false});
 
         this.props.handleEdit({
