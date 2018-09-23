@@ -1,5 +1,6 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
+import connect from "react-redux/es/connect/connect";
 
 // fetch('/todos')
 //     .then(function(response){
@@ -31,7 +32,7 @@ export const Login = class extends React.Component {
             body: JSON.stringify(temp),
         })
             .then((response) => {
-                        if (response.status !== 200) {
+                        if (response.status !== 200 && response.text().valueOf()===null) {
                             alert("login failed!");
                         }
                         return response.text()

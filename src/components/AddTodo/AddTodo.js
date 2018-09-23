@@ -17,7 +17,6 @@ class AddTodo extends React.Component {
         this.handleEdit = this.handleEdit.bind(this);
 
         this.state = {
-            // item:props.item,
             show: false,
             action: (props.type === "Add") ? '' : props.item.action,
             id:(props.type === "Add") ? null: props.item.id,

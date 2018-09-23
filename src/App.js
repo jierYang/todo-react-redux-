@@ -7,10 +7,7 @@ import TabIndex from "./components/Tab/TabIndex";
 
 import {Provider} from 'react-redux'
 import {combineReducers, createStore} from "redux";
-import {loginContainer, mapStateToProps} from "./components/Login/LoginConatiner"
-import Redirect from "react-router-dom/es/Redirect";
-
-import connect from "react-redux/es/connect/connect";
+import {loginContainer, withAuthentication} from "./components/Login/LoginConatiner"
 
 let todoId = 0;
 const addTodoReducer = (state = [], action) => {
@@ -39,7 +36,6 @@ const addTodoReducer = (state = [], action) => {
 };
 
 const authenticationReducer = (state = {isSucceed:false,token:""}, action) => {
-    debugger
     switch (action.type) {
         case "LOGIN":{
             state =  {isSucceed:action.isSucceed,token:action.token};
@@ -58,20 +54,7 @@ const store = createStore(combineReducers(
     }
 ));
 
-const withAuthentication = (WrappedComponent) => {
-    const View = (props) => {
-        const {logged, ...rest} = props;
 
-        return (
-            <div>
-                {!logged && <Redirect to="/login"/>}
-                {logged && <WrappedComponent {...rest} />}
-            </div>
-        );
-    };
-
-    return connect(mapStateToProps)(View);
-};
 
 const ConnectedTabIndex = withAuthentication(TabIndex);
 
