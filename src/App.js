@@ -38,10 +38,13 @@ const addTodoReducer = (state = [], action) => {
     }
 };
 
-const authenticationReducer = (state = false, action) => {
+const authenticationReducer = (state = {isSucceed:false,token:""}, action) => {
+    debugger
     switch (action.type) {
-        case "LOGIN":
-            return action.isSucceed;
+        case "LOGIN":{
+            state =  {isSucceed:action.isSucceed,token:action.token};
+            return state
+        }
         default:
             return state;
     }

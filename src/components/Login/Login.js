@@ -19,11 +19,6 @@ export const Login = class extends React.Component {
     }
 
     handleClick() {
-        // if (this.username.value === '1' && this.password.value === '1') {
-        //     this.props.onLogin();
-        // }
-        debugger
-
         let temp = {};
         temp.name = this.username.value;
         temp.password = this.password.value;
@@ -41,9 +36,9 @@ export const Login = class extends React.Component {
                         }
                         return response.text()
                     })
-            .then(data => {
-                alert(data)
-                this.props.onLogin();
+            .then(token => {
+                alert(token)
+                this.props.onLogin(token);
             })
             .catch(function () {
                 alert("login failed!");
