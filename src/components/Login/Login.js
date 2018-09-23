@@ -1,6 +1,14 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
 
+// fetch('/todos')
+//     .then(function(response){
+//         return response.json();
+//     })
+//     .then(function(myJson){
+//         console.log(myJson)
+//     });
+
 
 // UI->Props Data->Sate 一般用function 不用class 因为纯界面
 // const Login = () => (
@@ -11,9 +19,38 @@ export const Login = class extends React.Component {
     }
 
     handleClick() {
-        if (this.username.value === '1' && this.password.value === '1') {
-            this.props.onLogin();
-        }
+        // if (this.username.value === '1' && this.password.value === '1') {
+        //     this.props.onLogin();
+        // }
+        debugger
+
+        let temp = {};
+        temp.name = this.username.value;
+        temp.password = this.password.value;
+
+        fetch('/users/login', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(temp),
+        })
+            .then((response) => {
+                        if (response.status === 200) {
+                            this.props.onLogin();
+                        }
+                        else {
+                            alert("login failed: password or name error!");
+                        }
+                        return response.text()
+                    })
+            .then(data => {
+                alert(data)
+                // this.props.onLogin();
+            })
+            .catch(function (e) {
+                alert("login failed!");
+            })
     }
 
     render() {
