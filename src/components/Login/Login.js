@@ -36,19 +36,16 @@ export const Login = class extends React.Component {
             body: JSON.stringify(temp),
         })
             .then((response) => {
-                        if (response.status === 200) {
-                            this.props.onLogin();
-                        }
-                        else {
-                            alert("login failed: password or name error!");
+                        if (response.status !== 200) {
+                            alert("login failed!");
                         }
                         return response.text()
                     })
             .then(data => {
                 alert(data)
-                // this.props.onLogin();
+                this.props.onLogin();
             })
-            .catch(function (e) {
+            .catch(function () {
                 alert("login failed!");
             })
     }
