@@ -1,15 +1,5 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
-import connect from "react-redux/es/connect/connect";
-
-// fetch('/todos')
-//     .then(function(response){
-//         return response.json();
-//     })
-//     .then(function(myJson){
-//         console.log(myJson)
-//     });
-
 
 // UI->Props Data->Sate 一般用function 不用class 因为纯界面
 // const Login = () => (
@@ -38,11 +28,8 @@ export const Login = class extends React.Component {
                         return response.text()
                     })
             .then(token => {
-                alert(token)
                 this.props.onLogin(token);
-            })
-            .catch(function () {
-                alert("login failed!");
+                this.props.initList(token);
             })
     }
 

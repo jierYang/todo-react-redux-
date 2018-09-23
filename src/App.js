@@ -30,15 +30,22 @@ const addTodoReducer = (state = [], action) => {
             return state;
         }
 
+        case "INIT_TODO":{
+            state = action.todoList;
+
+            return state;
+        }
+
         default:
             return state;
     }
 };
 
-const authenticationReducer = (state = {isSucceed:false,token:""}, action) => {
+const authenticationReducer = (state = {isSucceed: false, token: ""}, action) => {
     switch (action.type) {
-        case "LOGIN":{
-            state =  {isSucceed:action.isSucceed,token:action.token};
+        case "LOGIN": {
+            state = {isSucceed: action.isSucceed, token: action.token};
+
             return state
         }
         default:
@@ -50,10 +57,9 @@ const authenticationReducer = (state = {isSucceed:false,token:""}, action) => {
 const store = createStore(combineReducers(
     {
         todoList: addTodoReducer,
-        isAuthenticated: authenticationReducer
+        authenticatedMsg: authenticationReducer
     }
 ));
-
 
 
 const ConnectedTabIndex = withAuthentication(TabIndex);

@@ -1,6 +1,6 @@
 import {Tab, Tabs} from "react-bootstrap";
 import React from "react";
-import TabTodoContainer from "../TodoList/TabTodo";
+import {TabTodoContainer} from "../TodoList/TabTodo";
 import TabStatistic from "../Statistic/TabStatistic";
 
 import './Tab.css'

@@ -16,14 +16,23 @@ const TodosTableHead = () => (
     </thead>
 );
 
+
+function fmtDate(obj){
+    var date =  new Date(obj);
+    var y = 1900+date.getYear();
+    var m = "0"+(date.getMonth()+1);
+    var d = "0"+date.getDate();
+    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
+}
+
 const TodosTableBody = (props) => {
     return (
         <tbody>
         <tr>
             <td>{props.item.action}</td>
-            <td>{props.item.tags}</td>
-            <td>{props.item.date.toLocaleDateString()}</td>
-            <td>{props.item.status}</td>
+            <td>{props.item.tags===null?"":props.item.tags.name}</td>
+            <td>{fmtDate(props.item.date)}</td>
+            <td>{props.item.status===null?"":props.item.status.name}</td>
             <td><AddTodoContainer type={'Edit'} item={props.item}/>
                 <button onClick={props.clickDelHandler}>delete</button>
             </td>
@@ -81,4 +90,4 @@ const mapDispatchToProps = (dispatch) => ({
 const TabTodoContainer = connect(mapStateToProps, mapDispatchToProps)(TabTodo);
 
 
-export default TabTodoContainer;
+export {TabTodoContainer};
