@@ -10,7 +10,13 @@ class SearchAction extends React.Component {
 
     handleSearchByAction() {
         debugger
-        this.props.initList(document.getElementById("searchContent").value, this.props.token);
+        let action = document.getElementById("searchContent").value;
+        if(action===""){
+            this.props.initList(this.props.token);
+        }
+        else{
+            this.props.initSearchList(action,this.props.token);
+        }
     }
 
     render() {
@@ -26,8 +32,21 @@ class SearchAction extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    initList: (action, token) => (
+    initSearchList: (action, token) => (
         fetch(`/todos/search/${action}`, {
+            method: 'get',
+            headers: {
+                'Authorization': token
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                dispatch({type: "INIT_TODO", todoList: myJson.content})
+            })),
+    initList: (token) => (
+        fetch('/todos', {
             method: 'get',
             headers: {
                 'Authorization': token
