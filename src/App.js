@@ -28,6 +28,7 @@ const addTodoReducer = (state = [], action) => {
         }
 
         case "INIT_TODO":{
+            debugger
             state = action.todoList;
 
             return state;

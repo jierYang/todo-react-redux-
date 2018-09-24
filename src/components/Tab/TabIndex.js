@@ -13,9 +13,10 @@ const TabIndex = (props) => (
                 <TabTodoContainer/>
             </Tab>
             <Tab eventKey={2} title="Statistic">
-                <TabStatistic numinProgress={props.todoList.filter(t => t.status === 'In progress').length}
-                              numblocked={props.todoList.filter(t => t.status === 'Blocked').length}
-                              numTodo={props.todoList.filter(t => t.status === 'To do').length}/>
+                <TabStatistic
+                    numinProgress={props.todoList.filter(t => t.status !== null && t.status.name === 'In progress').length}
+                    numblocked={props.todoList.filter(t => t.status !== null && t.status.name === 'Blocked').length}
+                    numTodo={props.todoList.filter(t => t.status !== null && t.status.name === 'To do').length}/>
             </Tab>
         </Tabs>
     </div>
