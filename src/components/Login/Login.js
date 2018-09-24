@@ -1,6 +1,8 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
 
+import "./Login.css"
+
 // UI->Props Data->Sate 一般用function 不用class 因为纯界面
 // const Login = () => (
 export const Login = class extends React.Component {
@@ -22,11 +24,11 @@ export const Login = class extends React.Component {
             body: JSON.stringify(temp),
         })
             .then((response) => {
-                        if (response.status !== 200 && response.text().valueOf()===null) {
-                            alert("login failed!");
-                        }
-                        return response.text()
-                    })
+                if (response.status !== 200 && response.text().valueOf() === null) {
+                    alert("login failed!");
+                }
+                return response.text()
+            })
             .then(token => {
                 this.props.onLogin(token);
                 this.props.initList(token);
@@ -38,12 +40,30 @@ export const Login = class extends React.Component {
             <div>
                 {!this.props.logged &&
                 <div>
-                    <label for="username"> User name:</label>
-                    <input ref={(ref) => this.username = ref} id="username"/>
-                    <label for="password">Password:</label>
-                    <input ref={(ref) => this.password = ref} type="password" id="password"/>
-                    <button onClick={this.handleClick}>登陆
-                    </button>
+                    <table className="tb_login">
+                        <tr>
+                            <td>
+                                <label for="username"> User name:</label>
+                            </td>
+                            <td>
+                                <input ref={(ref) => this.username = ref} id="username"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label for="password">Password:</label>
+                            </td>
+                            <td>
+                            <input ref={(ref) => this.password = ref} type="password" id="password"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                            <button className="btnLogin" onClick={this.handleClick}>登陆
+                            </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 }
                 {

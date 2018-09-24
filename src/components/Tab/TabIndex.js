@@ -9,6 +9,13 @@ import connect from "react-redux/es/connect/connect";
 const TabIndex = (props) => (
     <div className="tabIndex">
         <Tabs defaultActiveKey={1} id="tabIndex">
+            <div className="search">
+                <input type="text" placeholder="请输入检索关键字"/>
+                <span>
+                    <button className="btnSearch">检索</button>
+                </span>
+            </div>
+
             <Tab eventKey={1} title="To dos">
                 <TabTodoContainer/>
             </Tab>
