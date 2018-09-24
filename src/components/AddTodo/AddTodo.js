@@ -34,8 +34,8 @@ class AddTodo extends React.Component {
         this.props.handleAdd({
             action: document.getElementById("actionInput").value,
             date: this.state.date,
-            status: this.state.status,
-            tags: this.state.tags,
+            status:  {id:1,name:this.state.status},
+            tags: new Array({id:1,name:this.state.tags})
         });
     }
 
@@ -45,8 +45,8 @@ class AddTodo extends React.Component {
         this.props.handleEdit({
             action: this.state.btnContent==='Add'?document.getElementById("actionInput").value:this.state.action,
             date: this.state.date,
-            status: this.state.status,
-            tags: this.state.tags,
+            status: {id:1,name:this.state.status},
+            tags: new Array({id:1,name:this.state.tags}),
             id:this.state.id
         });
     }
