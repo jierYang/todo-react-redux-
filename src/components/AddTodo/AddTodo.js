@@ -19,10 +19,10 @@ class AddTodo extends React.Component {
         this.state = {
             show: false,
             action: (props.type === "Add") ? '' : props.item.action,
-            id:(props.type === "Add") ? null: props.item.id,
+            id: (props.type === "Add") ? null : props.item.id,
             date: new Date(),
             // status: 'To do',
-            status:null,
+            status: null,
             tags: '',
             btnContent: props.type,
             tipContent: (props.type === "Add") ? 'Add you want to do' : 'Details of Action',
@@ -31,24 +31,29 @@ class AddTodo extends React.Component {
 
     handleAdd() {
         this.setState({show: false});
-
+        // let temp = {};
+        // temp.action = document.getElementById("actionInput").value;
+        // temp.date = this.state.date;
+        // temp.status = this.state.status;
+        // temp.tags = new Array({id: 1, name: this.state.tags});
+        // this.props.handleAdd(todo,token);
         this.props.handleAdd({
             action: document.getElementById("actionInput").value,
             date: this.state.date,
-            status:  this.state.status,
-            tags: new Array({id:1,name:this.state.tags})
-        });
+            status: this.state.status,
+            tags: new Array({id: 1, name: this.state.tags})
+        },this.props.token);
     }
 
     handleEdit() {
         this.setState({show: false});
 
         this.props.handleEdit({
-            action: this.state.btnContent==='Add'?document.getElementById("actionInput").value:this.state.action,
+            action: this.state.btnContent === 'Add' ? document.getElementById("actionInput").value : this.state.action,
             date: this.state.date,
             status: this.state.status,
-            tags: new Array({id:1,name:this.state.tags}),
-            id:this.state.id
+            tags: new Array({id: 1, name: this.state.tags}),
+            id: this.state.id
         });
     }
 
@@ -98,7 +103,8 @@ class AddTodo extends React.Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.handleCancel}>CANCEL</Button>
-                        <Button onClick={this.state.btnContent === 'Add' ?this.handleAdd:this.handleEdit}>{this.state.btnContent}</Button>
+                        <Button
+                            onClick={this.state.btnContent === 'Add' ? this.handleAdd : this.handleEdit}>{this.state.btnContent}</Button>
                     </Modal.Footer>
                 </Modal>
 
@@ -112,18 +118,42 @@ class AddTodo extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    handleAdd: (todo) => dispatch({
-        type: 'ADD_TODO',
-        todo: todo
-    }),
-    handleEdit:(todo) => dispatch({
+    handleAdd: (todo,token) => (
+            fetch('/todos', {
+                method: 'post',
+                headers: {
+                    'Authorization': token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(todo),
+            })
+                .then(function (response) {
+                    if (response.status !== 200) {
+                        debugger
+                        alert("add failed!");
+                    }
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    debugger
+                    dispatch({
+                        type: 'ADD_TODO',
+                        todo: myJson
+                    })
+                })
+    ),
+    handleEdit: (todo) => dispatch({
         type: 'EDIT_TODO',
         todo: todo
     }),
 })
 
+const mapStateToProps = (state) => ({
+    token: state.authenticatedMsg.token
+});
 
-const AddTodoContainer = connect(null, mapDispatchToProps)(AddTodo);
+
+const AddTodoContainer = connect(mapStateToProps, mapDispatchToProps)(AddTodo);
 
 
 export default AddTodoContainer;
