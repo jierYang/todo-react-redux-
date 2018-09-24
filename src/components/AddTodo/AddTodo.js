@@ -21,9 +21,8 @@ class AddTodo extends React.Component {
             action: (props.type === "Add") ? '' : props.item.action,
             id: (props.type === "Add") ? null : props.item.id,
             date: new Date(),
-            // status: 'To do',
             status: null,
-            tags: '',
+            tags: null,
             btnContent: props.type,
             tipContent: (props.type === "Add") ? 'Add you want to do' : 'Details of Action',
         };
@@ -31,17 +30,11 @@ class AddTodo extends React.Component {
 
     handleAdd() {
         this.setState({show: false});
-        // let temp = {};
-        // temp.action = document.getElementById("actionInput").value;
-        // temp.date = this.state.date;
-        // temp.status = this.state.status;
-        // temp.tags = new Array({id: 1, name: this.state.tags});
-        // this.props.handleAdd(todo,token);
         this.props.handleAdd({
             action: document.getElementById("actionInput").value,
             date: this.state.date,
             status: this.state.status,
-            tags: new Array({id: 1, name: this.state.tags})
+            tags: new Array(this.state.tags)
         },this.props.token);
     }
 
@@ -52,7 +45,7 @@ class AddTodo extends React.Component {
             action: this.state.btnContent === 'Add' ? document.getElementById("actionInput").value : this.state.action,
             date: this.state.date,
             status: this.state.status,
-            tags: new Array({id: 1, name: this.state.tags}),
+            tags: new Array(this.state.tags),
             id: this.state.id
         });
     }

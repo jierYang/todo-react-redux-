@@ -3,20 +3,19 @@ import Select from 'react-select';
 
 
 const options = [
-    {name: "null", label: ""},
-    {name: "meeting_review", label: "Meeting Review"},
-    {name: "learning_devops", label: "Learning DevOps"},
-    {name: "watching_book", label: "Watching Book"}
+    {id:1,name: "meeting_review", label: "Meeting Review"},
+    {id:2,name: "learning_devops", label: "Learning DevOps"},
+    {id:3,name: "watching_book", label: "Watching Book"}
 ];
 
 export default class AddTodoTags extends React.Component {
     state = {
-        selectedOption: {value: 'null', label: ''},
+        selectedOption:  {name: "meeting_review", label: "Meeting Review"}
     }
 
     handleChange = (selectedOption) => {
         this.setState({selectedOption});
-        this.props.handleTags(selectedOption.label);
+        this.props.handleTags({id:selectedOption.id,name:selectedOption.label});
     }
 
     render() {

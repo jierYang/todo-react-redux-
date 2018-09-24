@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0537f85c-973c-4982-8f33-870b545529f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/AddTodo/AddTodo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddTodo/AddTodo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddTodo/AddTodoTags.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddTodo/AddTodoTags.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,7 +52,7 @@
         <counts>
           <entry key="css" value="253" />
           <entry key="html" value="1" />
-          <entry key="js" value="8660" />
+          <entry key="js" value="8667" />
           <entry key="json" value="32" />
         </counts>
       </usages-collector>
@@ -61,7 +61,7 @@
           <entry key="CSS" value="253" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="32" />
-          <entry key="JavaScript" value="8660" />
+          <entry key="JavaScript" value="8667" />
         </counts>
       </usages-collector>
     </session>
@@ -110,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="138" column="36" selection-start-line="138" selection-start-column="36" selection-end-line="138" selection-end-column="36" />
+            <state relative-caret-position="380">
+              <caret line="53" column="37" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -128,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodoTags.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+            <state relative-caret-position="60">
+              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -215,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/components/AddTodoStatus.js" />
         <option value="$PROJECT_DIR$/src/components/tab/TabIndex.js" />
         <option value="$PROJECT_DIR$/src/components/TodoList/TabTodo.css" />
-        <option value="$PROJECT_DIR$/src/components/AddTodo/AddTodoTags.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/components/TodoList/TodoDetails.js" />
         <option value="$PROJECT_DIR$/src/components/AddTodo/AddTodoCalendar.js" />
@@ -237,6 +236,7 @@
         <option value="$PROJECT_DIR$/src/components/Serach/SearchAction.js" />
         <option value="$PROJECT_DIR$/src/components/AddTodo/AddTodoStatus.js" />
         <option value="$PROJECT_DIR$/src/components/AddTodo/AddTodo.js" />
+        <option value="$PROJECT_DIR$/src/components/AddTodo/AddTodoTags.js" />
       </list>
     </option>
   </component>
@@ -263,8 +263,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="128" />
-    <option name="y" value="29" />
+    <option name="x" value="212" />
+    <option name="y" value="77" />
     <option name="width" value="1295" />
     <option name="height" value="810" />
   </component>
@@ -516,7 +516,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125462000" />
+    <option name="totallyTimeSpent" value="125712000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="128" y="29" width="1295" height="810" extended-state="0" />
@@ -703,20 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodoTags.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodoStatus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodoCalendar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -770,8 +756,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="138" column="36" selection-start-line="138" selection-start-column="36" selection-end-line="138" selection-end-column="36" />
+        <state relative-caret-position="380">
+          <caret line="53" column="37" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodoStatus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AddTodo/AddTodoTags.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>
