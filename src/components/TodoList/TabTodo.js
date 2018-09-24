@@ -17,12 +17,12 @@ const TodosTableHead = () => (
 );
 
 
-function fmtDate(obj){
-    var date =  new Date(obj);
-    var y = 1900+date.getYear();
-    var m = "0"+(date.getMonth()+1);
-    var d = "0"+date.getDate();
-    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
+function fmtDate(obj) {
+    var date = new Date(obj);
+    var y = 1900 + date.getYear();
+    var m = "0" + (date.getMonth() + 1);
+    var d = "0" + date.getDate();
+    return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
 }
 
 const TodosTableBody = (props) => {
@@ -30,9 +30,9 @@ const TodosTableBody = (props) => {
         <tbody>
         <tr>
             <td>{props.item.action}</td>
-            <td>{props.item.tags===null?"":props.item.tags.name}</td>
+            <td>{props.item.tags === null ? "" : props.item.tags.name}</td>
             <td>{fmtDate(props.item.date)}</td>
-            <td>{props.item.status===null?"":props.item.status.name}</td>
+            <td>{props.item.status === null ? "" : props.item.status.name}</td>
             <td><AddTodoContainer type={'Edit'} item={props.item}/>
                 <button onClick={props.clickDelHandler}>delete</button>
             </td>
@@ -53,8 +53,9 @@ const TabTodo = (props) => (
 
                                         clickDelHandler={() => {
                                             debugger
+
                                             function handleDel(id) {
-                                                props.handleDel(id);
+                                                props.handleDel(id,props.token);
                                             }
 
                                             handleDel(item.id)
@@ -77,15 +78,32 @@ const TabTodo = (props) => (
 
 // 建立从 state对象到（UI 组件的）props对象的映射关系。
 const mapStateToProps = (state) => ({
-    todoList: state.todoList
+    todoList: state.todoList,
+    token:state.authenticatedMsg.token
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    handleDel: (id) => dispatch({
-        type: 'DEL_TODO',
-        id: id
-    })
-})
+    handleDel: (id,token) => (
+            fetch(`/todos/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': token
+                }
+            })
+                .then((response) => {
+                    if (response.status !== 200) {
+                        alert("delete failed!");
+                    }
+                    else if(response.status===200){
+                        dispatch({
+                            type: 'DEL_TODO',
+                            id: id
+                        })
+                    }
+                    return response.text()
+                })
+        )
+});
 
 const TabTodoContainer = connect(mapStateToProps, mapDispatchToProps)(TabTodo);
 
