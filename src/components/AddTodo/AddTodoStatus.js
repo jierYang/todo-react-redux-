@@ -3,19 +3,19 @@ import Select from 'react-select';
 
 
 const options = [
-    { value: 'inProgress', label: 'In progress' },
-    { value: 'blocked', label: 'Blocked' },
-    { value: 'todo', label: 'To do' }
+    { id:1,value: 'inProgress', label: 'In progress' },
+    { id:2,value: 'blocked', label: 'Blocked' },
+    { id:3,value: 'todo', label: 'To do' }
 ];
 
 export default class AddTodoStatus extends React.Component {
     state = {
-        selectedOption: { value: 'todo', label: 'To do' },
+        selectedOption: { id:1,value: 'todo', label: 'To do' },
     }
 
     handleChange = (selectedOption) => {
         this.setState({ selectedOption });
-        this.props.handleStatus(selectedOption.label);
+        this.props.handleStatus({id:selectedOption.id,name:selectedOption.label});
     }
 
     render() {

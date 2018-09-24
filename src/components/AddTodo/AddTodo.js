@@ -21,7 +21,8 @@ class AddTodo extends React.Component {
             action: (props.type === "Add") ? '' : props.item.action,
             id:(props.type === "Add") ? null: props.item.id,
             date: new Date(),
-            status: 'To do',
+            // status: 'To do',
+            status:null,
             tags: '',
             btnContent: props.type,
             tipContent: (props.type === "Add") ? 'Add you want to do' : 'Details of Action',
@@ -34,7 +35,7 @@ class AddTodo extends React.Component {
         this.props.handleAdd({
             action: document.getElementById("actionInput").value,
             date: this.state.date,
-            status:  {id:1,name:this.state.status},
+            status:  this.state.status,
             tags: new Array({id:1,name:this.state.tags})
         });
     }
@@ -45,7 +46,7 @@ class AddTodo extends React.Component {
         this.props.handleEdit({
             action: this.state.btnContent==='Add'?document.getElementById("actionInput").value:this.state.action,
             date: this.state.date,
-            status: {id:1,name:this.state.status},
+            status: this.state.status,
             tags: new Array({id:1,name:this.state.tags}),
             id:this.state.id
         });
@@ -65,6 +66,7 @@ class AddTodo extends React.Component {
     }
 
     handleStatus(selectedOption) {
+        debugger
         this.setState({status: selectedOption});
         console.log({selectedOption});
     }
