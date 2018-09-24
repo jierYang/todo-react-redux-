@@ -1,0 +1,11 @@
+.search{
+    margin: 2% auto 2% auto;
+}
+
+.search input{
+    width: 64%;
+}
+
+.search .btnSearch{
+    width: 6%;
+}

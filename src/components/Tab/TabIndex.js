@@ -5,18 +5,13 @@ import TabStatistic from "../Statistic/TabStatistic";
 
 import './Tab.css'
 import connect from "react-redux/es/connect/connect";
+import SearchAction from "../Serach/SearchAction";
 
 const TabIndex = (props) => (
     <div className="tabIndex">
         <Tabs defaultActiveKey={1} id="tabIndex">
-            <div className="search">
-                <input type="text" placeholder="请输入检索关键字"/>
-                <span>
-                    <button className="btnSearch">检索</button>
-                </span>
-            </div>
-
             <Tab eventKey={1} title="To dos">
+                <SearchAction/>
                 <TabTodoContainer/>
             </Tab>
             <Tab eventKey={2} title="Statistic">

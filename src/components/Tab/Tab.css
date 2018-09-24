@@ -1,15 +1,3 @@
-.search{
-    margin: 2% auto 2% auto;
-}
-
-.search input{
-    width: 64%;
-}
-
-.search .btnSearch{
-    width: 6%;
-}
-
 .tab_todo_table_add {
     width: 70%;
     margin: 2% auto 0% auto;
