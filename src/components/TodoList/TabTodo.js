@@ -30,7 +30,9 @@ const TodosTableBody = (props) => {
         <tbody>
         <tr>
             <td>{props.item.action}</td>
-            <td>{props.item.tags === null ? "" : props.item.tags.name}</td>
+            <td>{props.item.tags === null ? "" :
+                props.item.tags.map(function (item) {return item.name;}).join(", ")}
+            </td>
             <td>{fmtDate(props.item.date)}</td>
             <td>{props.item.status === null ? "" : props.item.status.name}</td>
             <td><AddTodoContainer type={'Edit'} item={props.item}/>
@@ -55,7 +57,7 @@ const TabTodo = (props) => (
                                             debugger
 
                                             function handleDel(id) {
-                                                props.handleDel(id,props.token);
+                                                props.handleDel(id, props.token);
                                             }
 
                                             handleDel(item.id)
@@ -79,30 +81,30 @@ const TabTodo = (props) => (
 // 建立从 state对象到（UI 组件的）props对象的映射关系。
 const mapStateToProps = (state) => ({
     todoList: state.todoList,
-    token:state.authenticatedMsg.token
+    token: state.authenticatedMsg.token
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    handleDel: (id,token) => (
-            fetch(`/todos/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': token
+    handleDel: (id, token) => (
+        fetch(`/todos/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': token
+            }
+        })
+            .then((response) => {
+                if (response.status !== 200) {
+                    alert("delete failed!");
                 }
+                else if (response.status === 200) {
+                    dispatch({
+                        type: 'DEL_TODO',
+                        id: id
+                    })
+                }
+                return response.text()
             })
-                .then((response) => {
-                    if (response.status !== 200) {
-                        alert("delete failed!");
-                    }
-                    else if(response.status===200){
-                        dispatch({
-                            type: 'DEL_TODO',
-                            id: id
-                        })
-                    }
-                    return response.text()
-                })
-        )
+    )
 });
 
 const TabTodoContainer = connect(mapStateToProps, mapDispatchToProps)(TabTodo);
