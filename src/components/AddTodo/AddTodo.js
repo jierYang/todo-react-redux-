@@ -21,7 +21,7 @@ class AddTodo extends React.Component {
             action: (props.type === "Add") ? '' : props.item.action,
             id: (props.type === "Add") ? null : props.item.id,
             date: new Date(),
-            status: null,
+            status: {id:1,name:'To do'},
             tags: null,
             btnContent: props.type,
             tipContent: (props.type === "Add") ? 'Add you want to do' : 'Details of Action',
@@ -47,7 +47,7 @@ class AddTodo extends React.Component {
             status: this.state.status,
             tags: new Array(this.state.tags),
             id: this.state.id
-        });
+        },this.props.token);
     }
 
     handleCancel() {
@@ -123,7 +123,7 @@ const mapDispatchToProps = (dispatch) => ({
                 .then(function (response) {
                     if (response.status !== 200) {
                         debugger
-                        alert("add failed!");
+                        alert("Add failed!");
                     }
                     return response.json();
                 })
@@ -135,11 +135,31 @@ const mapDispatchToProps = (dispatch) => ({
                     })
                 })
     ),
-    handleEdit: (todo) => dispatch({
-        type: 'EDIT_TODO',
-        todo: todo
-    }),
-})
+    handleEdit: (todo,token) => (
+        fetch(`/todos/${todo.id}`, {
+            method: 'put',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todo),
+        })
+            .then(function (response) {
+                if (response.status !== 200) {
+                    debugger
+                    alert("Edit failed!");
+                }
+                return response.json();
+            })
+            .then(function (myJson) {
+                debugger
+                dispatch({
+                    type: 'EDIT_TODO',
+                    todo: myJson
+                })
+            })
+    )
+});
 
 const mapStateToProps = (state) => ({
     token: state.authenticatedMsg.token
